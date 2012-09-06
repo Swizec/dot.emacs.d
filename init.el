@@ -81,7 +81,7 @@
 (column-number-mode)
 
 (if (window-system)
-  (set-frame-size (selected-frame) 90 120))
+  (set-frame-size (selected-frame) 90 53))
 
 (load "~/.emacs.d/nxhtml/autostart.el")
 
