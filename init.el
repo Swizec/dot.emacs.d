@@ -107,3 +107,5 @@
 (global-set-key (kbd "C-n") 'goto-line)
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+(tabbar-mode)
