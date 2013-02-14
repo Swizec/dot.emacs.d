@@ -61,6 +61,10 @@
 (require 'starter-kit-perl)
 (require 'starter-kit-ruby)
 (require 'starter-kit-js)
+(require 'pretty-mode-plus)
+
+(load "~/.emacs.d/prelude-packages.el")
+;(prelude-packages)
 
 (regen-autoloads)
 (load custom-file 'noerror)
@@ -110,5 +114,4 @@
 
 (tabbar-mode)
 
-(require 'pretty-mode-plus)
 (turn-on-pretty-mode)
