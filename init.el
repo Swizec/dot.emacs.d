@@ -109,3 +109,6 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (tabbar-mode)
+
+(require 'pretty-mode-plus)
+(turn-on-pretty-mode)

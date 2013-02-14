@@ -1,3 +1,5 @@
 places
 backups/*
 auto-save-list/*
+tramp
+session*
