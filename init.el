@@ -11,9 +11,9 @@
 
 ;; Turn off mouse interface early in startup to avoid momentary display
 ;; You really don't need these; trust me.
-;(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-;(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-;(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
 ;; Load path etc.
 
@@ -116,3 +116,42 @@
 (tabbar-mode)
 
 (turn-on-pretty-mode)
+
+
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.handlebars\\'" . web-mode))
+
+(defadvice web-mode-highlight-part (around tweak-jsx activate)
+  (if (equal web-mode-content-type "jsx")
+      (let ((web-mode-enable-part-face nil))
+        ad-do-it)
+    ad-do-it))
+
+(autoload 'python-mode "python-mode" "Python Mode." t)
+(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+(add-to-list 'interpreter-mode-alist '("python" . python-mode))
+
+(defun dos2unix ()
+  "Replace DOS eolns CR LF with Unix eolns CR"
+  (interactive)
+    (goto-char (point-min))
+      (while (search-forward "\r" nil t) (replace-match "")))
+
+;;(require 'jsx-mode)
+;;(add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
+
+(require 'less-css-mode)
+(add-to-list 'auto-mode-alist '("\\.less\\'" . less-css-mode))
+
+(setq visible-bell nil)
+(setq ring-bell-function 'ignore)
