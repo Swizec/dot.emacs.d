@@ -1,5 +1,9 @@
 ;;; -*- coding: utf-8 -*-
-(("/Users/Swizec/.emacs.d/init.el" . 4488)
+(("/Users/Swizec/.emacs.d/init.el" . 2105)
+ ("/Users/Swizec/.emacs.d/elpa/exec-path-from-shell-20170508.4/exec-path-from-shell-autoloads.el" . 1282)
+ ("/Users/Swizec/.emacs.d/elpa/prettier-js-20170823.159/prettier-js-autoloads.el" . 437)
+ ("/Users/Swizec/.emacs.d/elpa/emoji-fontset-20160726.1224/emoji-fontset-autoloads.el" . 537)
+ ("/Users/Swizec/.emacs.d/elpa/emoji-display-20140117.213/emoji-display-autoloads.el" . 796)
  ("/Users/Swizec/.emacs.d/elpa/web-mode-20150201.1041/web-mode.el" . 200382)
  ("/Users/Swizec/.emacs.d/elpa/less-css-mode-20140919.524/less-css-mode-autoloads.el" . 663)
  ("/Users/Swizec/.emacs.d/elpa/web-mode-20150201.1041/web-mode-autoloads.el" . 372))

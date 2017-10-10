@@ -64,6 +64,9 @@
 (require 'starter-kit-js)
 (require 'pretty-mode-plus)
 
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+
 (load "~/.emacs.d/prelude-packages.el")
 ;(prelude-packages)
 
@@ -117,6 +120,13 @@
 
 (turn-on-pretty-mode)
 
+(require 'prettier-js)
+(defun enable-minor-mode (my-pair)
+  "Enable minor mode if filename match the regexp.  MY-PAIR is a cons cell (regexp . minor-mode)."
+  (if (buffer-file-name)
+      (if (string-match (car my-pair) buffer-file-name)
+      (funcall (cdr my-pair)))))
+
 
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
@@ -130,12 +140,19 @@
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.handlebars\\'" . web-mode))
+(add-hook 'web-mode-hook #'(lambda ()
+                            (enable-minor-mode
+                             '("\\.jsx?\\'" . prettier-js-mode))))
+
+(setq web-mode-content-types-alist
+      '(("jsx" . "\\.js[x]?\\'")))
 
 (defadvice web-mode-highlight-part (around tweak-jsx activate)
   (if (equal web-mode-content-type "jsx")
       (let ((web-mode-enable-part-face nil))
         ad-do-it)
     ad-do-it))
+
 
 (autoload 'python-mode "python-mode" "Python Mode." t)
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
@@ -155,3 +172,6 @@
 
 (setq visible-bell nil)
 (setq ring-bell-function 'ignore)
+
+(require 'emoji-display)
+(emoji-display-mode)
